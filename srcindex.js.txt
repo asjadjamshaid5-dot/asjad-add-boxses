@@ -1,0 +1,24 @@
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+let boxes = [];
+
+app.get("/api/boxes", (req, res) => {
+  res.json(boxes);
+});
+
+app.post("/api/boxes", (req, res) => {
+  const { title, desc, link } = req.body;
+  const newBox = { title, desc, link };
+  boxes.push(newBox);
+  res.json(newBox);
+});
+
+const PORT = 4000;
+app.listen(PORT, () => {
+  console.log(`Backend running on http://localhost:${PORT}`);
+});
