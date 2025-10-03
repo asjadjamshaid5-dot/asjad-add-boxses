@@ -1,0 +1,77 @@
+// Signup
+function signup() {
+  let email = document.getElementById('email').value;
+  let password = document.getElementById('password').value;
+  if(email && password){
+    localStorage.setItem(email, password);
+    alert('Signup successful! You can now login.');
+  } else {
+    alert('Please enter email and password.');
+  }
+}
+
+// Login
+function login() {
+  let email = document.getElementById('email').value;
+  let password = document.getElementById('password').value;
+  let storedPass = localStorage.getItem(email);
+  if(storedPass && storedPass === password){
+    alert('Login successful!');
+    localStorage.setItem('currentUser', email); // Track current user
+    window.location.href = 'boxes.html';
+  } else {
+    alert('Invalid email or password.');
+  }
+}
+
+// Load boxes from localStorage on boxes.html
+document.addEventListener('DOMContentLoaded', () => {
+  if(document.getElementById('boxes-container')){
+    loadBoxes();
+  }
+});
+
+// Add new box
+function addBox() {
+  let title = document.getElementById('new-title').value;
+  let desc = document.getElementById('new-desc').value;
+  let link = document.getElementById('new-link').value;
+  if(title && desc && link) {
+    let boxes = JSON.parse(localStorage.getItem('boxes') || "[]");
+    boxes.push({title, desc, link});
+    localStorage.setItem('boxes', JSON.stringify(boxes));
+    displayBox({title, desc, link});
+    document.getElementById('new-title').value = '';
+    document.getElementById('new-desc').value = '';
+    document.getElementById('new-link').value = '';
+  } else {
+    alert('Please fill all fields');
+  }
+}
+
+// Display all boxes on load
+function loadBoxes() {
+  let boxes = JSON.parse(localStorage.getItem('boxes') || "[]");
+  boxes.forEach(box => displayBox(box));
+}
+
+// Function to display a single box
+function displayBox(box) {
+  let container = document.getElementById('boxes-container');
+  let div = document.createElement('div');
+  div.className = 'box';
+  div.innerHTML = `
+    <h2>${box.title}</h2>
+    <p>${box.desc}</p>
+    <a href="${box.link}" target="_blank">Visit Link</a>
+    <button class="box-message-btn">Message</button>
+    <a href="https://jazzcash.com/pay/03068595903" class="buy-btn">Buy $1 Box</a>
+  `;
+  container.appendChild(div);
+
+  // Message button
+  div.querySelector('.box-message-btn').addEventListener('click', () => {
+    let msg = prompt("Type your message for this box:");
+    if(msg) alert("Message sent: " + msg);
+  });
+}
