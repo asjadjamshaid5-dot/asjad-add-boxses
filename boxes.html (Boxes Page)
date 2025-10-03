@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Boxes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Welcome to Add Boxes</h1>
+
+  <h2>Add New Box</h2>
+  <input type="text" id="new-title" placeholder="Box Title">
+  <input type="text" id="new-desc" placeholder="Box Description">
+  <input type="text" id="new-link" placeholder="Box Link">
+  <button onclick="addBox()">Add Box</button>
+
+  <div id="boxes-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
