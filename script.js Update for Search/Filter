@@ -1,0 +1,13 @@
+function searchBoxes() {
+  let search = document.getElementById('search-input').value.toLowerCase();
+  let filter = document.getElementById('filter-type').value;
+
+  let boxes = JSON.parse(localStorage.getItem('boxes') || "[]");
+  document.getElementById('boxes-container').innerHTML = '';
+
+  boxes.forEach(box => {
+    if((box.title.toLowerCase().includes(search)) && (filter === 'all' || box.type === filter)){
+      displayBox(box);
+    }
+  });
+}
