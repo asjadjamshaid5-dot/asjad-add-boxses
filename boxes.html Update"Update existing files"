@@ -1,0 +1,8 @@
+<h2>Search & Filter</h2>
+<input type="text" id="search-input" placeholder="Search by title" oninput="searchBoxes()">
+
+<select id="filter-type" onchange="searchBoxes()">
+  <option value="all">All Boxes</option>
+  <option value="normal">Normal $1</option>
+  <option value="premium">Premium $5</option>
+</select>
