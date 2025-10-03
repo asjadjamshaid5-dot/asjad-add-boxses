@@ -1,0 +1,29 @@
+function displayBox(box) {
+  let container = document.getElementById('boxes-container');
+  let div = document.createElement('div');
+  div.className = 'box';
+
+  // Payment button based on type
+  let paymentBtn = '';
+  if(box.type === 'normal') {
+    paymentBtn = `<a href="https://jazzcash.com/pay/03068595903" class="buy-btn">Buy $1 Box</a>`;
+  } else {
+    paymentBtn = `<a href="https://binance.com/pay/1090636027" class="buy-btn">Buy Premium $5 Box</a>`;
+  }
+
+  div.innerHTML = `
+    <h2>${box.title}</h2>
+    <p>${box.desc}</p>
+    <a href="${box.link}" target="_blank">Visit Link</a>
+    <button class="box-message-btn">Message</button>
+    ${paymentBtn}
+  `;
+
+  container.appendChild(div);
+
+  // Message button
+  div.querySelector('.box-message-btn').addEventListener('click', () => {
+    let msg = prompt("Type your message for this box:");
+    if(msg) alert("Message sent: " + msg);
+  });
+}
