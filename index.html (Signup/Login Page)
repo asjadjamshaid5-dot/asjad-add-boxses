@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Asjad Add Boxes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Asjad Add Boxes</h1>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="signup()">Signup</button>
+  <button onclick="login()">Login</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
