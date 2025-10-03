@@ -1,0 +1,11 @@
+<h2>Add New Box</h2>
+<input type="text" id="new-title" placeholder="Box Title">
+<input type="text" id="new-desc" placeholder="Box Description">
+<input type="text" id="new-link" placeholder="Box Link">
+
+<select id="box-type">
+  <option value="normal">Normal $1</option>
+  <option value="premium">Premium $5</option>
+</select>
+
+<button onclick="addBox()">Add Box</button>
